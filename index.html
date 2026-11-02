@@ -270,7 +270,7 @@ const lastPhotoByMember={};
    egg.classList.remove("open","shake");void egg.offsetWidth;egg.classList.add("shake");
    status.textContent="eeee!! it's opening!!";
    const c=pick();
-   // Try the API for a member-specific free image, but never leave the pull blank.
+   
    const ready=Promise.race([ensurePhotos(c),new Promise(resolve=>setTimeout(resolve,12000))]);
    setTimeout(async()=>{
      await ready;const ph=photoFor(c);
