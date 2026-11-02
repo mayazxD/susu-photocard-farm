@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>♡ pc farm ♡</title>
+<style>
+:root{--pink:#d8c9ff;--hot:#9c83d8;--cream:#fffaff;--ink:#44375c;--lav:#d9d0ff;--mint:#d9f0f2;--yellow:#fff0fb}
+*{box-sizing:border-box}
+body{margin:0;color:var(--ink);font:14px "Trebuchet MS",Verdana,sans-serif;background-color:#f8f5ff;background-image:radial-gradient(#cfc3f1 1px,transparent 1px);background-size:14px 14px}
+a{color:#c13e7c}
+.wrap{max-width:930px;margin:22px auto;padding:0 12px}
+.site{border:3px ridge #f1a8c7;background:var(--cream);box-shadow:6px 6px 0 #e8b7cf; padding:10px}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:8px;border:1px dashed #df8eb2;padding:7px 10px;background:#f3efff;font-size:11px}
+.logo{font-weight:bold;font-size:17px;letter-spacing:1px}.logo b{color:var(--hot)}
+.badge{display:inline-block;background:#fff;border:1px solid #c9b8ec;padding:4px 7px;font-size:10px;box-shadow:2px 2px 0 #f3c7d8}
+.banner{text-align:center;padding:12px 8px 17px;background:#eee9ff;border:2px dotted #c9b8ec;position:relative}
+.banner h1{font:normal bold clamp(27px,5vw,43px) Georgia,serif;margin:4px 0;color:#65518f;text-shadow:2px 2px #fff}
+.banner p{margin:5px 0;font-size:12px}
+.stars{color:#8f78cb;letter-spacing:5px;font-size:16px}
+.layout{display:grid;grid-template-columns:165px minmax(0,1fr) 170px;gap:10px;margin-top:10px}
+.box{border:2px ridge #c9b8ec;background:#fffdf6;margin-bottom:10px}
+.boxtitle{background:#e5dcff;border-bottom:1px solid #c9b8ec;padding:6px 8px;font-size:11px;font-weight:bold;letter-spacing:1px;text-transform:uppercase}
+.boxbody{padding:9px}
+.nav a{display:block;text-decoration:none;padding:6px 5px;border-bottom:1px dotted #e7c0cf;font-size:12px}
+.nav a:hover{background:#f3efff}
+.mini-note{font:italic 12px Georgia,serif;line-height:1.5}
+.stamp-row{display:flex;flex-wrap:wrap;gap:4px;justify-content:center}
+.stamp{width:66px;height:23px;display:grid;place-items:center;border:1px solid #e2a0bb;background:#ffe4ef;font-size:9px;font-weight:bold;color:#9f3f70;transform:rotate(-2deg)}
+.stamp:nth-child(2){background:#e7e0ff;transform:rotate(2deg)}.stamp:nth-child(3){background:#e0f3df;transform:rotate(-1deg)}
+.center{min-width:0}
+.intro{font:13px Georgia,serif;line-height:1.65;text-align:center;padding:10px 12px;background:#fff;border:1px dashed #c9b8ec;margin-bottom:10px}
+.intro strong{color:#8d69b8}
+.game{border:2px ridge #c9b8ec;background:#fffdf7}
+.gamehead{display:flex;justify-content:space-between;gap:6px;align-items:center;padding:7px 9px;background:#e5dcff;border-bottom:1px solid #c9b8ec;font-size:11px;font-weight:bold}
+.gamebody{padding:11px}
+.tabs{display:flex;flex-wrap:wrap;justify-content:center;gap:5px;margin-bottom:10px}
+.tab,.btn{border:2px outset #f3c1d5;background:#fff1f7;color:#8e3d68;padding:6px 9px;font-weight:bold;font-size:11px}
+.tab.active{background:#e5dcff;border-color:#b6a8e9}
+.stage{position:relative;min-height:235px;border:2px dashed #e4a1bd;background:#fff3f8;display:grid;place-items:center;overflow:hidden}
+.stage:before{content:"✧  ·  ˚  ♡  ˚  ·  ✧";position:absolute;top:13px;color:#d56d9d;font-size:13px;letter-spacing:4px}
+.stage:after{content:"✦     ♡     ✦";position:absolute;bottom:11px;color:#c07ca1;font-size:13px;letter-spacing:8px}
+.eggwrap{width:136px;height:157px;position:relative;z-index:1;transition:transform .2s}
+.egg{position:absolute;left:12px;top:4px;width:112px;height:145px;border:2px solid #c96f98;border-radius:52% 48% 48% 52% / 60% 60% 40% 40%;background:linear-gradient(120deg,#fff 0%,#ffdce9 60%,#f5aeca 100%);box-shadow:inset -7px -4px #e991b21c,3px 5px 0 #f3c5d7}
+.egg:before{content:"";position:absolute;left:22px;top:20px;width:18px;height:47px;background:#fff9;border-radius:100%;transform:rotate(18deg)}
+.face{position:absolute;top:66px;left:0;width:100%;text-align:center;font-size:19px;letter-spacing:3px;color:#88415f}
+.cheek{position:absolute;top:94px;width:11px;height:6px;border-radius:50%;background:#f29abb}.cheek.l{left:25px}.cheek.r{right:25px}
+.bow{position:absolute;right:9px;top:11px;font-size:22px;color:#c54e83;transform:rotate(12deg)}
+.cracktop,.crackbottom{display:none;position:absolute;left:12px;width:112px;height:78px;border:2px solid #c96f98;background:linear-gradient(120deg,#fff,#ffdce9 65%,#f5aeca)}
+.cracktop{top:4px;border-radius:70px 70px 10px 10px;clip-path:polygon(0 0,100% 0,100% 85%,78% 74%,63% 90%,45% 77%,28% 91%,13% 78%,0 88%)}
+.crackbottom{top:76px;height:73px;border-radius:10px 10px 60px 60px;clip-path:polygon(0 0,13% 13%,28% 1%,45% 15%,63% 1%,78% 14%,100% 2%,100% 100%,0 100%)}
+.eggwrap.open .egg{display:none}.eggwrap.open .cracktop,.eggwrap.open .crackbottom{display:block}
+.eggwrap.open .cracktop{animation:up .75s ease forwards}.eggwrap.open .crackbottom{animation:down .75s ease forwards}
+.eggwrap.shake{animation:shake .12s linear 4}
+@keyframes shake{0%,100%{transform:rotate(0)}25%{transform:rotate(5deg)}75%{transform:rotate(-5deg)}}
+@keyframes up{to{transform:translate(-14px,-42px) rotate(-20deg)}}@keyframes down{to{transform:translate(14px,34px) rotate(13deg)}}
+.gamebuttons{display:flex;gap:6px;margin-top:9px}.btn.main{flex:1;background:#f4a9c8;border-color:#d57fa3;box-shadow:2px 2px 0 #d57fa3}.btn:active{border-style:inset}
+.status{text-align:center;font-size:11px;color:#a35a7b;min-height:18px;margin:8px 0 0}
+.result{margin-top:10px;padding:9px;border:1px dashed #c9b8ec;background:#fff8fc;text-align:center;min-height:90px;display:grid;place-items:center}
+.placeholder{font:italic 12px Georgia,serif;line-height:1.6;color:#a16c85}
+.card{width:176px;padding:7px;background:#fff;border:2px solid #e9a3bf;box-shadow:3px 3px 0 #f1c4d5;transform:rotate(-1.5deg);animation:pop .4s ease both}
+@keyframes pop{from{opacity:0;transform:translateY(10px) rotate(7deg) scale(.8)}to{opacity:1;transform:translateY(0) rotate(-1.5deg) scale(1)}}
+.cardart{height:145px;display:grid;place-items:center;position:relative;border:1px solid #fff;background:linear-gradient(145deg,#f8d4e4,#ddd6ff);overflow:hidden}
+.cardart:before,.cardart:after{content:"";position:absolute;width:95px;height:95px;border:1px solid #fff9;border-radius:50%}
+.cardart:after{width:67px;height:67px}
+.symbol{font-size:53px;z-index:1;color:#8e6485;text-shadow:2px 2px #fff}
+.cardart img,.miniart img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2}
+.cardart.hasimg{height:auto;aspect-ratio:55/80}.cardart.hasimg:before,.cardart.hasimg:after{display:none}
+.miniart{position:relative;overflow:hidden}.miniart.hasimg{height:auto;aspect-ratio:55/80}
+.credit{font-size:8px;line-height:1.3;color:#a16c85;padding-top:5px;text-align:left}.credit a{color:#8d69b8}
+.cardfoot{display:flex;justify-content:space-between;align-items:center;text-align:left;padding:7px 1px 1px;gap:4px}
+.member{font:bold 14px Georgia,serif}.gname{font-size:8px;letter-spacing:1px;margin-top:3px;color:#9b7186}
+.rarity{font-size:8px;border:1px solid #d9c6e9;background:#eee7ff;padding:4px;color:#6d5595}
+.rarity.legendary{background:#fff0ac;border-color:#d8b64f;color:#8a641b}.rarity.common{background:#e8f4e8;border-color:#c1dfc5;color:#527c58}
+.album{margin-top:10px;border:2px ridge #c9b8ec;background:#fffdf7}
+.albumhead{display:flex;justify-content:space-between;gap:8px;background:#dcd5ff;padding:7px 9px;border-bottom:1px solid #b8a8e7;font-size:11px;font-weight:bold}
+.albumbody{padding:9px}
+.collection{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px}
+.mini{padding:4px;border:1px solid #e6b4c9;background:white;min-width:0}
+.miniart{height:57px;display:grid;place-items:center;font-size:25px;background:linear-gradient(145deg,#f8d4e4,#ddd6ff)}
+.mininame{font-size:8px;text-align:center;font-weight:bold;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:4px}
+.minigroup{font-size:7px;text-align:center;color:#9a7185;margin-top:2px}
+.emptyalbum{grid-column:1/-1;text-align:center;font:italic 12px Georgia,serif;color:#a16c85;padding:15px}
+.rightnote{text-align:center;line-height:1.5;font-size:11px}
+.songlist a{display:block;text-decoration:none;font-size:11px;line-height:1.4;padding:6px 2px;border-bottom:1px dotted #d9c9ef;color:#705a9d}.songlist a:hover{background:#f4efff;color:#a44f91}
+.rightnote .big{font-size:26px;display:block;margin:3px}
+.counter{font: bold 20px Georgia,serif;text-align:center;color:#8e79c9}
+.random-note{font:italic 12px Georgia,serif;line-height:1.55;color:#775a91;min-height:55px}
+.smallprint{font-size:10px;line-height:1.5;color:#9c7788}
+.footer{text-align:center;font-size:10px;padding:13px 5px 4px;color:#9e6f84}
+@media(max-width:720px){.layout{grid-template-columns:1fr}.leftcol,.rightcol{display:grid;grid-template-columns:1fr 1fr;gap:8px}.box{margin-bottom:0}.collection{grid-template-columns:repeat(4,minmax(0,1fr))}.stage{min-height:220px}}
+@media(max-width:430px){.topbar{flex-wrap:wrap}.leftcol,.rightcol{grid-template-columns:1fr}.collection{grid-template-columns:repeat(3,minmax(0,1fr))}.banner h1{font-size:29px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="site">
+  <header class="banner">
+    <div class="stars">✧･ﾟ: *✧･ﾟ:*　♡　*:･ﾟ✧*:･ﾟ✧</div>
+    <h1>♡ welcome to the pc farm! ♡</h1>
+    
+    <div class="stars">☆ ୨୧ ☆ ୨୧ ☆</div>
+  </header>
+  <div class="layout">
+    <aside class="leftcol">
+      <section class="box"><div class="boxtitle">♡ little menu</div><div class="boxbody nav">
+        <a href="#hatch">➜ crack an egg</a><a href="#album">➜ my collection</a><a href="#currently">➜ currently playing</a>
+      </div></section>
+      <section class="box" id="currently"><div class="boxtitle">currently playing ♫</div><div class="boxbody songlist">
+        <div class="smallprint" style="margin-bottom:6px">pick a song to open it on YouTube ♡</div>
+        <a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=ENHYPEN+Still+Monster">♪ ENHYPEN — Still Monster ↗</a>
+        <a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=ENHYPEN+Helium">♪ ENHYPEN — Helium ↗</a>
+        <a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=TXT+Resist">♪ TXT — Resist ↗</a>
+        <a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=TXT+New+Rules">♪ TXT — New Rules ↗</a>
+      </div></section>
+      <section class="box"><div class="boxtitle">cute little stamps</div><div class="boxbody"><div class="stamp-row"><div class="stamp">TXT LOVER</div><div class="stamp">ENGENE ♡</div><div class="stamp">SO CUTE</div><div class="stamp">LUCKY EGG</div></div></div></section>
+    </aside>
+
+    <main class="center">
+
+      <section class="game" id="hatch">
+        <div class="gamehead"><span>🥚 THE EGG MACHINE</span><span>no. <span id="pullnum">001</span></span></div>
+        <div class="gamebody">
+          <div class="tabs"><button class="tab active" data-group="TXT">TXT</button><button class="tab" data-group="ENHYPEN">ENHYPEN</button><button class="tab" data-group="MIX">MYSTERY EGG ?</button></div>
+          <div class="stage">
+            <div class="eggwrap" id="egg"><div class="egg"><span class="bow">୨୧</span><span class="face">•ᴗ•</span><i class="cheek l"></i><i class="cheek r"></i></div><div class="cracktop"></div><div class="crackbottom"></div></div>
+          </div>
+          <div class="gamebuttons"><button class="btn main" id="crack">✧ crack it open! ✧</button><button class="btn" id="reset" title="Reset egg">↻</button></div>
+          <div class="status" id="status" aria-live="polite">psst… there’s someone inside ♡</div>
+          <div class="result" id="result"><div class="placeholder">your photocard will show up here!<br>click the egg button when you're ready ♡</div></div>
+        </div>
+      </section>
+      <section class="album" id="album"><div class="albumhead"><span>♡ THE LITTLE ALBUM ♡</span><span><span id="count">0</span> pulls</span></div><div class="albumbody"><div class="collection" id="collection"><div class="emptyalbum">your collection is empty! go hatch a friend ♡</div></div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin-top:10px">
+      <button class="btn" id="exportSave">♡ back up my cards</button>
+      <button class="btn" id="importSave">↥ restore a backup</button>
+      <input id="importFile" type="file" accept=".json,application/json" hidden>
+    </div>
+  </div></section>
+    </main>
+
+    <aside class="rightcol">
+      <section class="box"><div class="boxtitle">egg luck meter</div><div class="boxbody"><div class="counter" id="luck">00</div></div></section>
+      <section class="box"><div class="boxtitle">tiny reminder ♡</div><div class="boxbody rightnote"><span class="big">୨୧</span><div id="randomNote" class="random-note">loading a tiny note...</div><button class="btn" id="newNote" style="margin-top:8px">another note ↻</button></div></section>
+    </aside>
+  </div>
+  <div class="footer">♡ thanks for visiting my tiny corner of the internet ♡<br>made with love, pixel-ish dreams, and a suspicious number of hearts</div>
+</div>
+</div>
+<script>
+(() => {
+ const cards=[
+  {id:"soobin",img:"",name:"SOOBIN",group:"TXT",symbol:"☁",rarity:"COMMON",bg:"linear-gradient(145deg,#dbeafa,#f6d9e7)"},
+  {id:"yeonjun",img:"",name:"YEONJUN",group:"TXT",symbol:"✦",rarity:"RARE",bg:"linear-gradient(145deg,#f8cddd,#d9d0f3)"},
+  {id:"beomgyu",img:"",name:"BEOMGYU",group:"TXT",symbol:"♡",rarity:"COMMON",bg:"linear-gradient(145deg,#f6e4bd,#f4c9da)"},
+  {id:"taehyun",img:"",name:"TAEHYUN",group:"TXT",symbol:"☼",rarity:"COMMON",bg:"linear-gradient(145deg,#d9eadc,#f8e5b8)"},
+  {id:"hueningkai",img:"",name:"HUENING KAI",group:"TXT",symbol:"☆",rarity:"LEGENDARY",bg:"linear-gradient(145deg,#d9d0f3,#f7d3e4)"},
+  {id:"jungwon",img:"",name:"JUNGWON",group:"ENHYPEN",symbol:"☾",rarity:"RARE",bg:"linear-gradient(145deg,#d9d0f3,#cce6ef)"},
+  {id:"heeseung",img:"",name:"HEESEUNG",group:"ENHYPEN",symbol:"✧",rarity:"COMMON",bg:"linear-gradient(145deg,#f4d6dd,#d9d0f3)"},
+  {id:"jay",img:"",name:"JAY",group:"ENHYPEN",symbol:"♠",rarity:"COMMON",bg:"linear-gradient(145deg,#d5e3ed,#d8d0f1)"},
+  {id:"jake",img:"",name:"JAKE",group:"ENHYPEN",symbol:"☀",rarity:"LEGENDARY",bg:"linear-gradient(145deg,#f8e6a8,#f4c7d8)"},
+  {id:"sunghoon",img:"",name:"SUNGHOON",group:"ENHYPEN",symbol:"❄",rarity:"RARE",bg:"linear-gradient(145deg,#d6eafa,#e6d8f4)"},
+  {id:"sunoo",img:"",name:"SUNOO",group:"ENHYPEN",symbol:"୨୧",rarity:"COMMON",bg:"linear-gradient(145deg,#f8d4e2,#f8e6a8)"},
+  {id:"niki",img:"",name:"NI-KI",group:"ENHYPEN",symbol:"★",rarity:"COMMON",bg:"linear-gradient(145deg,#d5e8dc,#d6d1f2)"}
+ ];
+ let group="TXT",collection=[],pulls=0,busy=false;
+ const notes = [
+   "your laugh should be protected like a photocard.",
+   "hearing you talk about your interests means the world to me.",
+   "pimi is lucky to have a mom like you :p",
+   "you bring whimsy back into this boring and heavy world baby.",
+   "i love you more than you love yeonjun.",
+   "you're worthy of every form of love and effort in this world.",
+   "one little step at a time for something way bigger.",
+   "TXT and ENHYPEN are lucky to have a fan like you ☆",
+   "take a break if you need one. the world can wait",
+   "suhu baby means the world to me :D"
+ ];
+ function showRandomNote(){
+   const node=document.getElementById("randomNote");
+   if(!node)return;
+   let next=notes[Math.floor(Math.random()*notes.length)];
+   if(notes.length>1 && node.dataset.last===next) next=notes[(notes.indexOf(next)+1)%notes.length];
+   node.textContent=next;node.style.fontStyle=[0,7,8].includes(notes.indexOf(next))?"italic":"normal";node.dataset.last=next;
+ }
+ const egg=document.getElementById("egg"),crack=document.getElementById("crack"),status=document.getElementById("status"),result=document.getElementById("result");
+ const norm=t=>String(t||"").toUpperCase().replace(/[\s-]/g,"");
+ const cardOf=x=>cards.find(c=>x.id&&c.id===x.id)||cards.find(c=>norm(c.name)===norm(x.name)&&c.group===x.group);
+ try{const s=JSON.parse(localStorage.getItem("her-egg-site")||"[]");if(Array.isArray(s))collection=s.map(x=>{const c=cardOf(x);return c?{id:c.id,name:c.name,group:c.group,photo:x.photo||null}:null}).filter(Boolean);}catch(e){}
+ pulls=collection.length;
+ document.querySelectorAll(".tab").forEach(b=>b.addEventListener("click",()=>{
+   if(!b.dataset.group)return;
+   document.querySelectorAll(".tabs .tab").forEach(x=>x.classList.toggle("active",x===b));
+   group=b.dataset.group;status.textContent=group==="MIX"?"mystery egg!! any TXT or ENHYPEN member can hatch ✧":group+" egg selected — make a wish ♡";
+ }));
+ // Shuffle-bag selection: every member in the selected group (including
+ // all seven ENHYPEN members, especially HEESEUNG) appears once before a
+ // member repeats. MIX has one combined bag. Each bag reshuffles independently.
+ const memberBags={},lastPickedByGroup={};
+ function shuffle(items){
+   const a=items.slice();
+   for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}
+   return a;
+ }
+ function pick(){
+   const key=group;
+   const pool=group==="MIX"?cards:cards.filter(c=>c.group===group);
+   if(!memberBags[key]||memberBags[key].length===0){
+     memberBags[key]=shuffle(pool);
+     // Avoid the same member at the reshuffle boundary where possible.
+     const last=lastPickedByGroup[key];
+     if(last&&memberBags[key].length>1&&memberBags[key][memberBags[key].length-1].id===last){
+       [memberBags[key][0],memberBags[key][1]]=[memberBags[key][1],memberBags[key][0]];
+     }
+   }
+   const chosen=memberBags[key].pop();
+   lastPickedByGroup[key]=chosen.id;
+   return chosen;
+ }
+   // Local gallery library: generated by build_gallery.py from member folders.
+  let photos={};
+  let libraryReady=null;
+  async function ensurePhotos(c){
+    if(!libraryReady){
+      libraryReady=fetch("photos.json",{cache:"no-store"})
+        .then(r=>{if(!r.ok)throw new Error("Could not load photos.json");return r.json();})
+        .then(data=>{photos=data||{};return photos;})
+        .catch(err=>{console.warn(err);photos={};return photos;});
+    }
+    await libraryReady;
+    return Array.isArray(photos[c.id])?photos[c.id]:[];
+  }
+const lastPhotoByMember={};
+ const recentPhotosByMember={};
+ try{Object.assign(recentPhotosByMember,JSON.parse(sessionStorage.getItem("pcfarm-recent-v2")||"{}")||{});}catch(e){}
+ const photoFor=c=>{
+   const l=photos[c.id];if(!l||!l.length)return null;
+   const recent=recentPhotosByMember[c.id]||[];
+   let choices=l.filter(x=>!recent.includes(x.u));
+   if(!choices.length){recentPhotosByMember[c.id]=[];choices=l.slice();}
+   const chosen=choices[Math.floor(Math.random()*choices.length)];
+   recentPhotosByMember[c.id]=[...(recentPhotosByMember[c.id]||[]),chosen.u].slice(-Math.min(8,Math.max(1,l.length-1)));
+   try{sessionStorage.setItem("pcfarm-recent-v2",JSON.stringify(recentPhotosByMember));}catch(e){}
+   lastPhotoByMember[c.id]=chosen.u;return chosen;
+ };
+ // Escape text before inserting it into HTML attributes or links.
+ function esc(value){
+   return String(value ?? "").replace(/[&<>"']/g, ch => ({
+     "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;"
+   }[ch]));
+ }
+ function show(c,ph){
+   const source=ph||null;
+   const src=(ph&&ph.u)||(c.img&&c.img)||"";
+   const art=src?`<img src="${esc(src)}" alt="${c.name}" loading="eager" referrerpolicy="no-referrer" onerror="this.remove();this.parentElement.classList.remove('hasimg');this.parentElement.classList.add('imagefailed')">`:"";
+   const label=src?"":`<span style="position:absolute;bottom:5px;left:0;right:0;font-size:8px;letter-spacing:1px;color:#83536f">${c.group} · SAMPLE CARD</span>`;
+   const credit=!c.img&&source&&source.p?`<div class="credit">photo: <a href="${esc(source.p)}" target="_blank" rel="noopener">${esc(source.a)}</a> · ${esc(source.l)} · <a href="${esc(source.p)}" target="_blank" rel="noopener">Wikimedia Commons source &amp; license</a></div>`:"";
+   result.innerHTML=`<div class="card"><div class="cardart${src?" hasimg":""}" style="background:${c.bg}"><span class="symbol">${c.symbol}</span>${art}${label}</div><div class="cardfoot"><div><div class="member">${c.name}</div><div class="gname">${c.group} ♡</div></div><span class="rarity ${c.rarity.toLowerCase()}">${c.rarity}</span></div>${credit}</div>`;
+ }
+ function drawAlbum(){
+   document.getElementById("count").textContent=pulls;
+   document.getElementById("pullnum").textContent=String(pulls+1).padStart(3,"0");
+   document.getElementById("luck").textContent=String(pulls).padStart(2,"0");
+   const target=document.getElementById("collection");
+   if(!collection.length){target.innerHTML='<div class="emptyalbum">your collection is empty! go hatch a friend ♡</div>';return;}
+   target.innerHTML=collection.slice().reverse().slice(0,15).map(x=>{const c=cardOf(x),src=c.img||(x.photo&&x.photo.u)||"";return `<div class="mini"><div class="miniart${src?" hasimg":""}" style="background:${c.bg}">${src?`<img src="${esc(src)}" alt="${c.name}" loading="lazy" onerror="this.remove()">`:c.symbol}</div><div class="mininame">${c.name}</div><div class="minigroup">${c.group}</div></div>`}).join("");
+ }
+ crack.addEventListener("click",()=>{
+   if(busy)return;busy=true;crack.disabled=true;crack.textContent="cracking... ✧";
+   egg.classList.remove("open","shake");void egg.offsetWidth;egg.classList.add("shake");
+   status.textContent="eeee!! it's opening!!";
+   const c=pick();
+   // Try the API for a member-specific free image, but never leave the pull blank.
+   const ready=Promise.race([ensurePhotos(c),new Promise(resolve=>setTimeout(resolve,12000))]);
+   setTimeout(async()=>{
+     await ready;const ph=photoFor(c);
+     egg.classList.remove("shake");egg.classList.add("open");show(c,ph);
+     pulls++;collection.push({id:c.id,name:c.name,group:c.group,photo:ph});
+     try{localStorage.setItem("her-egg-site",JSON.stringify(collection));}catch(e){}
+     drawAlbum();
+     status.textContent=ph?(c.rarity==="LEGENDARY"?"OMG LEGENDARY PULL!!! ☆*: .｡. o(≧▽≦)o .｡.:*☆":c.rarity==="RARE"?"a rare little treasure!! ♡":"new friend unlocked!! ☆"):"no photo in this member folder yet — add images and rebuild the gallery ♡";
+     crack.disabled=false;crack.textContent="♡ crack another egg ♡";busy=false;
+   },750);
+ });
+ document.getElementById("reset").addEventListener("click",()=>{if(busy)return;egg.classList.remove("open","shake");status.textContent="psst… there’s someone inside ♡";});
+ document.getElementById("newNote").addEventListener("click",showRandomNote);
+ showRandomNote();
+ drawAlbum();
+})();
+</script>
+</body>
+</html>
