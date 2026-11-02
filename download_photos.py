@@ -1,8 +1,3 @@
-#!/usr/bin/env python3
-"""Download publicly indexed TXT/ENHYPEN images into member folders, then rebuild photos.json.
-Uses DuckDuckGo image search via the community `ddgs` package; no API key required.
-Search results may be inaccurate, blocked, copyrighted, or rate-limited, so review files in review/.
-"""
 from pathlib import Path
 from urllib.request import Request, urlopen
 from urllib.error import URLError, HTTPError
